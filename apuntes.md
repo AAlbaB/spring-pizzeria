@@ -1,5 +1,5 @@
 # Proyecto con Spring Data JPA
-1. Se creó el proyecto en spring initializr con:
+1. Se creó el proyecto en spring initializr con [Spring Initializr](https://start.spring.io/):
    - Gradle - Groovy, Java 17, spring boot 3.1.2.
    - Dependencias: Lombok, Spring data JPA, Spring web y MySQL Driver.
    - Recordar tener seleccionado en la configuración global de IntelliJ como en la del propio proyecto java en su versión 17 (Ver en Settings, Build, Execution and Deployment, Build Tools, Gradle y en el Gradle JVM tener selecciona el JAVA_HOME con la versión 17 o superior) y en el lado de la aplicación (Clic derecho a la app, Project Settings, Project y en SDK tener la versión 17 o superior).
@@ -13,4 +13,8 @@
    - Para colocar la BD en Postgres "spring.datasource.driver-class-name=org.postgresql.Driver" y "spring.datasource.url=jdbc:postgresql://localhost:<port>:<NombreDeBaseDeDatos>". También el archivo de build.gradle: "runtimeOnly 'org.postgresql:postgresql'"
    - El parámetro "spring.jpa.hibernate.ddl-auto=update": Permite crear las tablas a partir de los entities y no borra la información, sino que sondea que estamos haciendo y lo va replicando en la BD en términos de estructura como relaciones, tablas.
    - El parámetro "spring.jpa.show-sql=true": Ver en consola todo lo que hagamos en el proyecto como afecta la base de datos
-
+5. Primero creamos las clases que serán las tablas en BD, en la ruta: "persistence.entity"
+   - Se colocó la notación **@Getter**, **@Setter** y **@NoArgsConstructor**, para darle por getter y setter de la clase
+   - Después de crear las entidades, se puede correr el programa para que se creen las tablas, gracias al parámetro de hibernate en los properties
+   - Se marca una clase con **@IdClass** para que con JPA indicar que ese entity, tiene una clave primaria compuesta
+   - Con la notación **@JoinColumn**, se indica a través de que columna se unen las tablas
